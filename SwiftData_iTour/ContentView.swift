@@ -6,17 +6,45 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+  @Environment(\.modelContext) private var modelContext
+  @Query private var destination: [Destination]
+  
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+      NavigationStack {
+        List {
+          ForEach(destination) { destination in
+            VStack(alignment: .leading) {
+              Text(destination.name)
+                .font(.headline)
+              Text(destination.date.formatted(
+                date: .long,
+                time: .shortened
+              ))
+            }
+          }
         }
-        .padding()
+        .navigationTitle("itour")
+        .toolbar {
+          Button("Add Samples") {
+            addDestination()
+          }
+        }
+      }
     }
+  
+  private func addDestination() {
+    let destinations = [
+      Destination(name: "Rome"),
+      Destination(name: "Florence"),
+      Destination(name: "Naples")
+      ]
+    destinations.forEach { destination in
+      modelContext.insert(destination)
+    }
+  }
 }
 
 #Preview {
