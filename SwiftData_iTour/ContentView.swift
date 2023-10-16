@@ -10,12 +10,12 @@ import SwiftData
 
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
-  @Query private var destination: [Destination]
+  @Query private var destinations: [Destination]
   
     var body: some View {
       NavigationStack {
         List {
-          ForEach(destination) { destination in
+          ForEach(destinations) { destination in
             VStack(alignment: .leading) {
               Text(destination.name)
                 .font(.headline)
@@ -25,8 +25,9 @@ struct ContentView: View {
               ))
             }
           }
+          .onDelete(perform: deleteDestinations(_:))
         }
-        .navigationTitle("itour")
+        .navigationTitle("iTour")
         .toolbar {
           Button("Add Samples") {
             addDestination()
@@ -43,6 +44,13 @@ struct ContentView: View {
       ]
     destinations.forEach { destination in
       modelContext.insert(destination)
+    }
+  }
+  
+  private func deleteDestinations(_ indexSet: IndexSet) {
+    for index in indexSet {
+      let destination = destinations[index]
+      modelContext.delete(destination)
     }
   }
 }
