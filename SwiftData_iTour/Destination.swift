@@ -10,10 +10,10 @@ import SwiftData
 
 @Model
 final class Destination {
-  let name: String
-  let details: String
-  let date: Date
-  let priority: Int
+  var name: String
+  var details: String
+  var date: Date
+  var priority: Int
   
   init
   (name: String = "",
