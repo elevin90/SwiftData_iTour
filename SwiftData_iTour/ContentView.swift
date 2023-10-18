@@ -10,35 +10,20 @@ import SwiftData
 
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
-  @Query private var destinations: [Destination]
   @State private var path = [Destination]()
   
     var body: some View {
       NavigationStack(path: $path) {
-        List {
-          ForEach(destinations) { destination in
-            NavigationLink(value: destination) {
-              VStack(alignment: .leading) {
-                Text(destination.name)
-                  .font(.headline)
-                Text(destination.date.formatted(
-                  date: .long,
-                  time: .shortened
-                ))
-              }
+        DestinationListingView()
+          .navigationTitle("iTour")
+          .navigationDestination(for: Destination.self, 
+                                 destination: { destination in
+            EditDestinationView(destination: destination)
+          })
+          .toolbar {
+            Button("Add Destination", systemImage: "plus") {
+              addDestination()
             }
-          }
-          .onDelete(perform: deleteDestinations(_:))
-        }
-        .navigationTitle("iTour")
-        .navigationDestination(for: Destination.self, 
-                               destination: { destination in
-          EditDestinationView(destination: destination)
-        })
-        .toolbar {
-          Button("Add Destination", systemImage: "plus") {
-            addDestination()
-          }
         }
       }
     }
@@ -58,13 +43,6 @@ struct ContentView: View {
     let destintation = Destination()
     modelContext.insert(destintation)
     path = [destintation]
-  }
-  
-  private func deleteDestinations(_ indexSet: IndexSet) {
-    for index in indexSet {
-      let destination = destinations[index]
-      modelContext.delete(destination)
-    }
   }
 }
 
