@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct EditDestinationView: View {
+  @Environment(\.modelContext) private var modelContext
   @Bindable var destination: Destination
   @State private var newSightName = ""
   
@@ -30,12 +31,12 @@ struct EditDestinationView: View {
       Section("Sights") {
         ForEach(destination.sights) { sight in
           Text(sight.name)
-        }
+        }.onDelete(perform: deleteSight(_:))
         
         HStack {
           TextField("Add a new sight in \(destination.name)",
                     text: $newSightName)
-          Button("Add", action: addSign)
+          Button("Add", action: addSight)
         }
       }
     }
@@ -43,7 +44,7 @@ struct EditDestinationView: View {
     .navigationBarTitleDisplayMode(.inline)
   }
   
-  func addSign() {
+  private func addSight() {
     if newSightName.isEmpty {
       return
     }
@@ -51,6 +52,13 @@ struct EditDestinationView: View {
       let sight = Sight(name: newSightName)
       destination.sights.append(sight)
       newSightName = ""
+    }
+  }
+  
+  private func deleteSight(_ indexSet: IndexSet) {
+    for index in indexSet {
+      let destination = destination.sights.remove(at: index)
+      modelContext.delete(destination)
     }
   }
 }
