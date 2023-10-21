@@ -14,6 +14,7 @@
 		CBC1AC162ADDC14300EFF123 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1AC152ADDC14300EFF123 /* Destination.swift */; };
 		CBC1AC182ADDC97C00EFF123 /* EditDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1AC172ADDC97C00EFF123 /* EditDestinationView.swift */; };
 		CBC1AC1A2ADF1FA500EFF123 /* DestinationListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1AC192ADF1FA500EFF123 /* DestinationListingView.swift */; };
+		CBC1AC1C2AE40C9400EFF123 /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1AC1B2AE40C9400EFF123 /* Sight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CBC1AC152ADDC14300EFF123 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		CBC1AC172ADDC97C00EFF123 /* EditDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDestinationView.swift; sourceTree = "<group>"; };
 		CBC1AC192ADF1FA500EFF123 /* DestinationListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationListingView.swift; sourceTree = "<group>"; };
+		CBC1AC1B2AE40C9400EFF123 /* Sight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				CBC1AC192ADF1FA500EFF123 /* DestinationListingView.swift */,
 				CBC1AC172ADDC97C00EFF123 /* EditDestinationView.swift */,
 				CBC1AC152ADDC14300EFF123 /* Destination.swift */,
+				CBC1AC1B2AE40C9400EFF123 /* Sight.swift */,
 				CBC1AC0A2ADD9FB700EFF123 /* Assets.xcassets */,
 				CBC1AC0C2ADD9FB700EFF123 /* SwiftData_iTour.entitlements */,
 				CBC1AC0D2ADD9FB700EFF123 /* Preview Content */,
@@ -151,6 +154,7 @@
 				CBC1AC092ADD9FB600EFF123 /* ContentView.swift in Sources */,
 				CBC1AC072ADD9FB600EFF123 /* SwiftData_iTourApp.swift in Sources */,
 				CBC1AC162ADDC14300EFF123 /* Destination.swift in Sources */,
+				CBC1AC1C2AE40C9400EFF123 /* Sight.swift in Sources */,
 				CBC1AC182ADDC97C00EFF123 /* EditDestinationView.swift in Sources */,
 				CBC1AC1A2ADF1FA500EFF123 /* DestinationListingView.swift in Sources */,
 			);
